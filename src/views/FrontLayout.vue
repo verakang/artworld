@@ -18,7 +18,7 @@
             <li class="ms-lg-3 ">
               <router-link to="/cart" class="p-3 pb-2 pt-4 py-ms-2">
                 <i class="h5 bi bi-bag-fill position-relative">
-                  <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">{{ carts.length }}</span>
+                  <span class="badge rounded-pill bg-danger position-absolute" style="top: -10px; right: -14px; width: 24px; height: 24px; font-size: 14px;">{{ carts.length }}</span>
                 </i>
               </router-link>
             </li>

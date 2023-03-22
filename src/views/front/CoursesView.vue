@@ -64,6 +64,7 @@
           .then((res) => {
             this.products = res.data.products
             this.page = res.data.pagination
+            window.scrollTo(0, 0);
           })
           .catch((err) => {
             alert(err.response.data.message)

@@ -105,7 +105,7 @@
           </button>
         </h2>
         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body mx-2 mx-md-5 mb-4">學生如在開課前三天提出退費申請，我們將會全額退費。在開課24小時前提出退費申請，我們將會退還50%的學費，24小時內的課程則無法進行退費。另外，本站課程可以轉讓，臨時取消來不及申請退費的學生可 將課程轉讓給他人。</div>
+          <div class="accordion-body mx-2 mx-md-5 mb-4">學生如在開課前三天提出退費申請，我們將會全額退費。在開課24小時前提出退費申請，我們將會退還50%的學費，24小時內的課程則無法進行退費。另外，本站課程可以轉讓，臨時取消來不及申請退費的學生可將課程轉讓給他人。</div>
         </div>
       </div>
       <div class="accordion-item">
