@@ -3,7 +3,7 @@
   <div class="container py-5">
     <nav class="my-4" style="`--bs-breadcrumb-divider: >;`" aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
+        <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
         <li class="breadcrumb-item active" aria-current="page">課程列表</li>
       </ol>
     </nav>
@@ -11,13 +11,13 @@
       <div class="col" v-for="product in products" :key="product.id">
         <div class="card h-100 border-primary">
           <div class="overflow-hidden" style="height: 180px;">
-            <router-link :to="`/course/${product?.id}`" class="card-title h5">
+            <RouterLink :to="`/course/${product?.id}`" class="card-title h5">
               <img :src="product.imageUrl" class="courses__img card-img-top" alt="課程圖示" style="height: 180px;">
-            </router-link>
+            </RouterLink>
           </div>
           <div class="card-body">
             <div class="d-flex justify-content-between mb-2">
-              <router-link :to="`/course/${product?.id}`" class="card-title h5 mb-0">{{ product?.title }}</router-link>
+              <RouterLink :to="`/course/${product?.id}`" class="card-title h5 mb-0">{{ product?.title }}</RouterLink>
               <h6 class="badge bg-dark p-2 mb-0"> #{{ product.category }}</h6>
             </div>
             <div>

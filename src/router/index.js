@@ -16,10 +16,6 @@ const router = createRouter({
           component: () => import('../views/front/AboutView.vue')
         },
         {
-          path: 'news',
-          component: () => import('../views/front/NewsView.vue')
-        },
-        {
           path: 'courses',
           component: () => import('../views/front/CoursesView.vue'),
         },
@@ -36,9 +32,27 @@ const router = createRouter({
           component: () => import('../views/front/MembersView.vue')
         },
         {
+          path: 'login',
+          component: () => import('../views/front/LoginView.vue')
+        },
+        {
           path: '/:pathMatch(.*)*',
           component: () => import('../views/NotFound.vue')
         }
+      ]
+    },
+    {
+      path: '/admin',
+      component: () => import('../views/DashboardView.vue'),
+      children: [
+        {
+          path: 'courses',
+          component: () => import('../views/admin/AdminCourses.vue'),
+        },
+        {
+          path: 'orders',
+          component: () => import('../views/admin/AdminOrders.vue'),
+        },
       ]
     }
   ]

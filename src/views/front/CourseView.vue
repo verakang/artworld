@@ -3,8 +3,8 @@
   <div class="container py-5">
     <nav class="mb-4" style="`--bs-breadcrumb-divider: >;``" aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
-        <li class="breadcrumb-item"><router-link to="/courses">課程列表</router-link></li>
+        <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
+        <li class="breadcrumb-item"><RouterLink to="/courses">課程列表</RouterLink></li>
         <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
       </ol>
     </nav>

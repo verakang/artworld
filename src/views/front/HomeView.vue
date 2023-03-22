@@ -9,7 +9,7 @@
             <div class="card-img-overlay banner__item overflow-hidden d-flex justify-content-center align-items-center" style="border-radius: 80px 20px 20px 20px">
               <div class="banner__title">
                 <p class="text-center mb-1">＃{{ products[0]?.category }}</p>
-                <router-link :to="`/course/${products[0]?.id}`" class="card-title h5 text-light stretched-link">{{ products[0]?.title }}</router-link>              </div>
+                <RouterLink :to="`/course/${products[0]?.id}`" class="card-title h5 text-light stretched-link">{{ products[0]?.title }}</RouterLink>              </div>
             </div>
           </div>
         </div>
@@ -19,7 +19,7 @@
             <div class="card-img-overlay banner__item overflow-hidden d-flex justify-content-center align-items-center" style="border-radius: 20px 80px 20px 20px">
               <div class="banner__title">
                 <p class="text-center mb-1">＃{{ products[1]?.category }}</p>
-                <router-link :to="`/course/${products[1]?.id}`" class="card-title h5 text-light stretched-link">{{ products[1]?.title }}</router-link>
+                <RouterLink :to="`/course/${products[1]?.id}`" class="card-title h5 text-light stretched-link">{{ products[1]?.title }}</RouterLink>
               </div>
             </div>
           </div>
@@ -30,7 +30,7 @@
             <div class="card-img-overlay banner__item overflow-hidden d-flex justify-content-center align-items-center" style="border-radius: 20px 20px 20px 80px">
               <div class="banner__title">
                 <p class="text-center mb-1">＃{{ products[2]?.category }}</p>
-                <router-link :to="`/course/${products[2]?.id}`" class="card-title h5 text-light stretched-link">{{ products[2]?.title }}</router-link>
+                <RouterLink :to="`/course/${products[2]?.id}`" class="card-title h5 text-light stretched-link">{{ products[2]?.title }}</RouterLink>
               </div>
             </div>
           </div>
@@ -41,7 +41,7 @@
             <div class="card-img-overlay banner__item overflow-hidden d-flex justify-content-center align-items-center" style="border-radius: 20px 20px 80px 20px">
               <div class="banner__title">
                 <p class="text-center mb-1">＃{{ products[3]?.category }}</p>
-                <router-link :to="`/course/${products[3]?.id}`" class="card-title h5 text-light stretched-link">{{ products[3]?.title }}</router-link>
+                <RouterLink :to="`/course/${products[3]?.id}`" class="card-title h5 text-light stretched-link">{{ products[3]?.title }}</RouterLink>
               </div>
             </div>
           </div>

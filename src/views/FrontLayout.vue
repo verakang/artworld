@@ -6,21 +6,21 @@
     <nav class="navbar navbar-expand-lg bg-white py-2 text-primary">
       <div class="container">
         <div class="py-3">
-          <router-link to="/" class="h3 font-rufina py-3 pe-3">Art / World.</router-link>
+          <RouterLink to="/" class="h3 font-rufina py-3 pe-3">Art / World.</RouterLink>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <ul class="d-flex ms-auto list-unstyled m-0 navbar-nav font-rufina text-center">
-            <li><router-link to="/about" class="p-3 pb-2 pt-4 py-ms-2">About</router-link></li>
-            <li class="ms-lg-3"><router-link to="/courses" class="p-3 pb-2 pt-4 py-ms-2">Courses</router-link></li>
+            <li><RouterLink to="/about" class="p-3 pb-2 pt-4 py-ms-2">About</RouterLink></li>
+            <li class="ms-lg-3"><RouterLink to="/courses" class="p-3 pb-2 pt-4 py-ms-2">Courses</RouterLink></li>
             <li class="ms-lg-3 ">
-              <router-link to="/cart" class="p-3 pb-2 pt-4 py-ms-2">
+              <RouterLink to="/cart" class="p-3 pb-2 pt-4 py-ms-2">
                 <i class="h5 bi bi-bag-fill position-relative">
                   <span class="badge rounded-pill bg-danger position-absolute" style="top: -10px; right: -14px; width: 24px; height: 24px; font-size: 14px;">{{ carts.length }}</span>
                 </i>
-              </router-link>
+              </RouterLink>
             </li>
           </ul>
         </div>
@@ -36,7 +36,7 @@
     <div class="container py-5 border-top d-flex">
       <div>
         <div>
-          <router-link to="/" class="fs-3 font-rufina">Art / World.</router-link>
+          <RouterLink to="/" class="fs-3 font-rufina">Art / World.</RouterLink>
         </div>
         <ul class="d-flex list-unstyled mt-3 mb-0">
           <li><a href="https://line.me/zh-hant/" target="_blank"><i class="bi bi-line fs-4"></i></a></li>
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="bg-primary p-3">
-      <p class="text-white text-center m-0 font-rufina fs-7">Copyright＠2023 Art World</p>
+      <p class="text-white text-center m-0 font-rufina fs-6">Copyright＠2023 Art World ・ <RouterLink to="/login" class="text-white font-noto">後台管理</RouterLink></p>
     </div>
   </footer>
 </template>
