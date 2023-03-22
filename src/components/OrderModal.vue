@@ -20,7 +20,7 @@
                   </tr>
                   <tr>
                     <th>訂購日期</th>
-                    <td>{{ orderTemp.create_at }}</td>
+                    <td>{{ $moment(new Date(orderTemp.create_at * 1000)).format('YYYY-MM-DD HH:mm') }}</td>
                   </tr>
                   <tr>
                     <th>購買品項</th>

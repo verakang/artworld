@@ -6,7 +6,7 @@
         登入會員
       </h3>
       <div>
-        <form id="form" class="form-signin">
+        <form id="form" class="form-signin" @submit.prevent="login">
           <div class="form-floating mb-3">
             <input type="email" v-model="user.username" class="form-control" id="username"
               placeholder="name@example.com" required autofocus>
@@ -17,7 +17,7 @@
               placeholder="Password" required>
             <label for="password">Password</label>
           </div>
-            <button class="btn btn-lg btn-primary w-100 mt-3" type="button" @click="login">
+            <button class="btn btn-lg btn-primary w-100 mt-3" type="submit" :disabled="isProcessing">
               登入
             </button>
         </form>
@@ -37,12 +37,14 @@ export default {
         username: '',
         password: ''
       },
+      isProcessing: false,
       status: false,
       isLoading: false,
     }
   },
   methods: {
     login () {
+      this.isProcessing = true;
       const url = `${VITE_URL}/v2/admin/signin`
       this.$http
         .post(url, this.user)
@@ -80,6 +82,7 @@ export default {
             timerProgressBar: true,
             toast: true
           })
+          this.isProcessing = false
           this.user = {}
         })
     },
