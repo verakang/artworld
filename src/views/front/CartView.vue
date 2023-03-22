@@ -52,11 +52,11 @@
       <tfoot>
         <tr>
           <td colspan="3" class="text-end">總計</td>
-          <td class="text-center">{{ carts.total }} 元</td>
+          <td class="text-center">{{ total }} 元</td>
         </tr>
-        <tr>
+        <tr :class="{'d-none': total === final_total}">
           <td colspan="3" class="text-end text-success">折扣價</td>
-          <td class="text-center text-success">{{ carts.final_total }} 元</td>
+          <td class="text-center text-success">{{ final_total }} 元</td>
         </tr>
       </tfoot>
     </table>
@@ -124,7 +124,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(cartStore, ['carts','loadingItem'])
+    ...mapState(cartStore, ['carts','loadingItem', 'final_total', 'total'])
   },
   methods: {
     ...mapActions(cartStore, ['getCarts', 'removeItem', 'deleteCart']),

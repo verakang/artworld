@@ -8,7 +8,9 @@ const cartStore = defineStore('cart', {
   state: () =>{
     return {
       carts: [],
-      loadingItem: ''
+      loadingItem: '',
+      final_total: '',
+      total: ''
     }
   },
   actions: {
@@ -16,6 +18,8 @@ const cartStore = defineStore('cart', {
       axios.get(`${VITE_URL}/v2/api/${VITE_PATH}/cart`)
         .then(res => {
           this.carts = res.data.data.carts
+          this.final_total = res.data.data.final_total
+          this.total = res.data.data.total
         })
         .catch(err => {
           Swal.fire({
