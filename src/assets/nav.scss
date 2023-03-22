@@ -1,0 +1,14 @@
+.navbar-nav a{
+  display: block;
+  position: relative;
+  &:hover::after, &.router-link-exact-active::after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    width: 20px;
+    height: 2px;
+    background-color: $primary;
+  }
+}

@@ -1,0 +1,29 @@
+* {
+  font-weight: bold;
+}
+
+img {
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  transition-delay: 2s;
+}
+
+.font-rufina {
+  font-family: 'Rufina', serif;
+}
+
+.font-noto {
+  font-family: 'Noto Serif TC', sans-serif;
+}
+
+.colored-toast.swal2-icon-success {
+  background-color: #a5dc86 !important;
+}
+
+.colored-toast.swal2-icon-error {
+  background-color: #f27474 !important;
+}
