@@ -11,11 +11,11 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup" ref="collapse">
           <ul class="d-flex ms-auto list-unstyled m-0 navbar-nav font-rufina text-center font-noto">
-            <li><RouterLink to="/admin/courses" class="p-3 pb-2 pt-4 py-ms-2">產品列表</RouterLink></li>
-            <li class="ms-lg-3"><RouterLink to="/admin/orders" class="p-3 pb-2 pt-4 py-ms-2">訂單列表</RouterLink></li>
-            <li class="ms-lg-3 "><a class="p-3 pb-2 pt-4 py-ms-2" @click.prevent="logout">登出</a></li>
+            <li><RouterLink to="/admin/courses" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">產品列表</RouterLink></li>
+            <li class="ms-lg-3"><RouterLink to="/admin/orders" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">訂單列表</RouterLink></li>
+            <li class="ms-lg-3 "><a class="p-3 pb-2 pt-4 py-ms-2" @click.prevent="logout" @click="closeNavbar">登出</a></li>
           </ul>
         </div>
       </div>
@@ -37,12 +37,14 @@
 import { RouterView } from 'vue-router'
 const { VITE_URL } = import.meta.env
 import Swal from 'sweetalert2'
+import Collapse from 'bootstrap/js/dist/collapse';
 
 export default {
   data() {
     return {
       visible: false,
-      status: false
+      status: false,
+      collapse: {}
     }
   },
   components: {
@@ -89,6 +91,9 @@ export default {
     logout () {
       document.cookie = `hexschool=; expires=${new Date()}`
       this.$router.push('/')
+    },
+    closeNavbar() {
+      this.collapse.hide()
     }
   },
   created () {
@@ -96,6 +101,9 @@ export default {
   },
   mounted() {
     this.checkLogin()
+    this.collapse = new Collapse(this.$refs.collapse, {
+      toggle: false,
+    });
   }
 }
 </script>
