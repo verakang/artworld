@@ -132,7 +132,7 @@
         <div class="carousel-item active">
           <div class="d-block d-flex justify-content-center align-items-center">
             <div class="card-group w-80">
-              <div class="card border-0 px-6 px-lg-0">
+              <div class="card border-0 px-4 px-lg-0">
                 <div class="card-body d-flex flex-column h-100">
                   <h5 class="card-title mb-4 h5 text-center fw-bold"># 大人的水彩課</h5>
                   <p class="card-text fs-6">美琪老師的水彩課，簡直讓我愛上了這個媒材！老師很親切，教學風格也非常好，讓我這個初學者也能夠輕鬆上手。這門課程非常適合想要嘗試水彩畫的新手，強烈推薦大家來一起上課！</p>
@@ -159,7 +159,7 @@
         <div class="carousel-item">
           <div class="d-block d-flex justify-content-center">
             <div class="card-group w-80">
-              <div class="card border-0 px-6 px-lg-0">
+              <div class="card border-0 px-4 px-lg-0">
                 <div class="card-body d-flex flex-column h-100">
                   <h5 class="card-title mb-4 h5 text-center fw-bold"># 海報設計</h5>
                   <p class="card-text fs-6">因為工作需求參加了小左老師的海報設計課程，老師循序漸進地教導，讓我掌握了基本技巧和設計原則。這些知識和技能在我的工作中派上了用場，讓我有更多發展機會，非常感謝小左老師的用心指導！</p>
@@ -186,7 +186,7 @@
         <div class="carousel-item">
           <div class="d-block d-flex justify-content-center">
             <div class="card-group w-80">
-              <div class="card border-0 px-6 px-lg-0">
+              <div class="card border-0 px-4 px-lg-0">
                 <div class="card-body d-flex flex-column h-100">
                   <h5 class="card-title mb-4 h5 text-center fw-bold"># 藝術鑑賞</h5>
                   <p class="card-text fs-6">Benny老師的藝術鑑賞課，真的是開了我的藝術眼界！老師講解的很詳細，也讓我對不同的藝術形式有了更深入的了解。這門課真的讓我覺得非常有收穫，推薦給所有喜歡藝術的朋友！</p>
@@ -221,6 +221,10 @@
       </button>
     </div>
   </section>
+  <section class="location container-fluid p-5 d-flex flex-column justify-content-center">
+    <h2 class="h1 font-rufina text-center mb-0">Location / <span class="fs-5 align-middle">藝享教室</span></h2>
+    <iframe class="mt-5 mx-auto" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.7202156870017!2d121.51481799999999!3d25.0435673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9735add7b29%3A0xb4c91a9cb4b69b18!2zMTAw5Y-w5YyX5biC5Lit5q2j5Y2A6aSo5YmN6LevMTIw6Jmf!5e0!3m2!1szh-TW!2stw!4v1681664593937!5m2!1szh-TW!2stw" width="600" height="300" style="border:2;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
 </template>
 
 <script>
@@ -337,5 +341,13 @@
 }
 .news__list li span {
   font-size: 14px;
+}
+
+.location {
+  background-image: url(https://images.unsplash.com/photo-1588345921586-7408ea1b2c3c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+  background-position: center bottom;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

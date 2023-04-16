@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="container py-5">
+  <div class="container py-5 mb-5">
     <nav class="mb-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>

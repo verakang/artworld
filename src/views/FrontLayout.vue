@@ -32,7 +32,7 @@
     <RouterView />
   </div>
 
-  <footer class="bg-white mt-5">
+  <footer class="bg-white mt-0">
     <div class="container py-5 border-top d-flex">
       <div>
         <div>
