@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid p-0 border-bottom fixed-top">
-    <div class="fixed-bottom p-4 mb-9 text-end" :class="{'d-none': !visible}">
+    <div class="fixed-bottom px-4 mb-9 text-end" :class="{'d-none': !visible}">
         <i class="text-center bi bi-arrow-up-short h2 gotop shadow px-2 bg-body rounded rounded-circle" @click="goTop"></i>
     </div>
     <nav class="navbar navbar-expand-lg bg-white py-2 text-primary">
@@ -11,12 +11,12 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup" ref="collapse">
           <ul class="d-flex ms-auto list-unstyled m-0 navbar-nav font-rufina text-center">
-            <li><RouterLink to="/about" class="p-3 pb-2 pt-4 py-ms-2">About</RouterLink></li>
-            <li class="ms-lg-3"><RouterLink to="/courses" class="p-3 pb-2 pt-4 py-ms-2">Courses</RouterLink></li>
-            <li class="ms-lg-3 ">
-              <RouterLink to="/cart" class="p-3 pb-2 pt-4 py-ms-2">
+            <li><RouterLink to="/about" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">About</RouterLink></li>
+            <li class="ms-lg-3"><RouterLink to="/courses" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">Courses</RouterLink></li>
+            <li class="ms-lg-3">
+              <RouterLink to="/cart" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">
                 <i class="h5 bi bi-bag-fill position-relative">
                   <span class="badge rounded-pill bg-danger position-absolute" style="top: -10px; right: -14px; width: 24px; height: 24px; font-size: 14px;">{{ carts.length }}</span>
                 </i>
@@ -45,12 +45,12 @@
         </ul>
       </div>
       <div class="ms-auto text-end">
-        <h3 class="fs-4 font-rufina">藝享世界</h3>
-        <ul class="list-unstyled">
+        <h3 class="fs-4">藝享世界</h3>
+        <ul class="list-unstyled fs-7">
           <li>藝術 ｜生活 ｜ 風格</li>
-          <li>02-22334567</li>
+          <li><a href="tel:+886-2-22334567">02-22334567</a></li>
           <li>台北市館前路 120 號 9 樓 909 室</li>
-          <li class="font-rufina">artworld99@service.com</li>
+          <li class="font-rufina"><a href="mailto:artworld99@service.com">artworld99@service.com</a></li>
         </ul>
       </div>
     </div>
@@ -64,11 +64,13 @@
 import { mapState, mapActions } from 'pinia'
 import { RouterView } from 'vue-router'
 import cartStore from '../stores/cart.js'
+import Collapse from 'bootstrap/js/dist/collapse';
 
 export default {
   data() {
     return {
-      visible: false
+      visible: false,
+      collapse: {}
     }
   },
   components: {
@@ -79,7 +81,7 @@ export default {
   },
   methods: {
     ...mapActions(cartStore, ['getCarts']),
-    handleScroll (e){
+    handleScroll (){
       this.visible = window.scrollY >= 250 ? true : false
     },
     goTop() {
@@ -88,6 +90,9 @@ export default {
         right: 0,
         behavior: 'smooth'
       })
+    },
+    closeNavbar() {
+      this.collapse.hide()
     }
   },
   created () {
@@ -95,6 +100,9 @@ export default {
   },
   mounted() {
     this.getCarts()
+    this.collapse = new Collapse(this.$refs.collapse, {
+      toggle: false,
+    });
   }
 }
 </script>

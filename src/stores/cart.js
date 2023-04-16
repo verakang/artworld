@@ -10,7 +10,8 @@ const cartStore = defineStore('cart', {
       carts: [],
       loadingItem: '',
       final_total: '',
-      total: ''
+      total: '',
+      isDone: ''
     }
   },
   actions: {
@@ -39,12 +40,14 @@ const cartStore = defineStore('cart', {
         })
     },
     addToCart (productId) {
+      this.isDone = productId
       const data = {
         product_id: productId,
         qty: 1
       }
       axios.post(`${VITE_URL}/v2/api/${VITE_PATH}/cart`, { data })
         .then(() => {
+          this.isDone = ''
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -117,44 +120,60 @@ const cartStore = defineStore('cart', {
         })
     },
     deleteCart () {
-      axios.delete(`${VITE_URL}/v2/api/${VITE_PATH}/carts`)
-        .then(() => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            color: 'white',
-            iconColor: 'white',
-            customClass: {
-              popup: 'colored-toast'
-            },
-            title: `已清空購物車！`,
-            showConfirmButton: false,
-            timer: 800,
-            timerProgressBar: true,
-            toast: true
+      Swal.fire({
+        position: 'top-end',
+        title: '確定清空購物車？',
+        text: "此操作無法復原，請再次確認。",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#90ce67',
+        cancelButtonColor: '#f74f4f',
+        confirmButtonText: '確認刪除',
+        cancelButtonText: '取消',
+        toast: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(`${VITE_URL}/v2/api/${VITE_PATH}/carts`)
+          .then(() => {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              color: 'white',
+              iconColor: 'white',
+              customClass: {
+                popup: 'colored-toast'
+              },
+              title: `已清空購物車！`,
+              showConfirmButton: false,
+              timer: 800,
+              timerProgressBar: true,
+              toast: true
+            })
+            this.getCarts()
           })
-          this.getCarts()
-        })
-        .catch((err) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            color: 'white',
-            iconColor: 'white',
-            customClass: {
-              popup: 'colored-toast'
-            },
-            title: `${err.response.data.message}，請再次確認。`,
-            showConfirmButton: false,
-            timer: 800,
-            timerProgressBar: true,
-            toast: true
+          .catch((err) => {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              color: 'white',
+              iconColor: 'white',
+              customClass: {
+                popup: 'colored-toast'
+              },
+              title: `${err.response.data.message}，請再次確認。`,
+              showConfirmButton: false,
+              timer: 800,
+              timerProgressBar: true,
+              toast: true
+            })
           })
-        })
+        }
+      })
+    },
+    numberComma(num) {
+      let comma = /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g
+      return num.toString().replace(comma, ',')
     }
-  },
-  getters: {
-
   }
 });
 

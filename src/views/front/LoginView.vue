@@ -1,5 +1,5 @@
 <template>
-  <VueLoading v-model:active="isLoading"></VueLoading>
+  <VueLoading v-model:active="isLoading" />
   <div class="container login d-flex justify-content-center align-items-center">
     <div class="row py-5">
       <h3 class="mb-3 my-4 text-center">
@@ -110,6 +110,6 @@ export default {
 
 <style>
   .login {
-    min-height: calc(100vh - 431px);
+    min-height: calc(100vh - 416px);
   }
 </style>

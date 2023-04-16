@@ -1,4 +1,5 @@
 <template>
+  <VueLoading v-model:active="isLoading" />
   <div class="container py-4">
     <h3 class="my-4">訂單列表頁面</h3>
     <div class="table-responsive-xxl">
@@ -24,11 +25,11 @@
               <ul class="list-unstyled">
               <li v-for="(product, i) in order.products" :key="i">
                 <p class="text-success mb-0 fs-6">{{ product.product.title }} <span class="text-dark">x {{ product.qty }}</span></p>
-                <p class="mb-2 fs-7">單價：{{ product.product.price }} 元</p>
+                <p class="mb-2 fs-7">單價：NT$ {{ numberComma(product.product.price) }}</p>
               </li>
             </ul>
             </td>
-            <td class="text-start">{{ order.total }}</td>
+            <td class="text-start">NT$ {{ numberComma(order.total) }}</td>
             <td>
               <span class="text-success" v-if="order.is_paid">已付款</span>
               <span v-else>未付款</span>
@@ -49,16 +50,18 @@
         </tbody>
       </table>
     </div>
-    <pagination class="container mt-5" :pages="page" @change-page="getOrder"></pagination>
-    <orderModal ref="orderModal" :order="orderTemp" :update-order="updateOrder"></orderModal>
-    <delOrder ref="delOrder" :order="orderTemp" :remove-order="removeOrder"></delOrder>
+    <Pagination class="container mt-5" :pages="page" @change-page="getOrder"></Pagination>
+    <OrderModal ref="orderModal" :order="orderTemp" :update-order="updateOrder"></OrderModal>
+    <DelOrder ref="delOrder" :order="orderTemp" :remove-order="removeOrder"></DelOrder>
   </div>
 </template>
 
 <script>
-import pagination from '../../components/PaginationView.vue'
-import orderModal from '../../components/OrderModal.vue'
-import delOrder from '../../components/DelOrder.vue'
+import { mapActions } from 'pinia'
+import cartStore from '@/stores/cart'
+import Pagination from '@/components/PaginationComponent.vue'
+import OrderModal from '@/components/OrderModal.vue'
+import DelOrder from '@/components/DelOrder.vue'
 import Swal from 'sweetalert2'
 
 const { VITE_URL, VITE_PATH } = import.meta.env
@@ -70,11 +73,12 @@ export default {
       orderTemp: {
         imagesUrl: []
       },
-      page: {}
+      page: {},
+      isLoading: false,
     }
   },
   components: {
-    pagination, orderModal, delOrder
+    Pagination, OrderModal, DelOrder
   },
   methods: {
     getOrder (page = 1) {
@@ -85,9 +89,23 @@ export default {
           // 將取得的資料存在 data
           this.orders = res.data.orders
           this.page = res.data.pagination
+          this.isLoading = false
         })
         .catch((err) => {
-          alert(err.response.data.message)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            color: 'white',
+            iconColor: 'white',
+            customClass: {
+              popup: 'colored-toast'
+            },
+            title: `${err.response.data.message}`,
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            toast: true
+          })
         })
     },
     openModal (state, order) {
@@ -180,9 +198,11 @@ export default {
             toast: true
           })
         })
-    }
+    },
+    ...mapActions(cartStore, ['numberComma'])
   },
   mounted () {
+    this.isLoading = true
     this.getOrder()
   }
 }

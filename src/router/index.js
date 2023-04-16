@@ -25,7 +25,11 @@ const router = createRouter({
         },
         {
           path: 'cart',
-          component: () => import('../views/front/CartView.vue')
+          component: () => import('../views/front/CartView.vue'),
+        },
+        {
+          path: 'order/:id',
+          component: () => import('../views/front/OrderView.vue'),
         },
         {
           path: 'members',
@@ -45,6 +49,10 @@ const router = createRouter({
       path: '/admin',
       component: () => import('../views/DashboardView.vue'),
       children: [
+        {
+          path: '',
+          component: () => import('../views/admin/AdminCourses.vue'),
+        },
         {
           path: 'courses',
           component: () => import('../views/admin/AdminCourses.vue'),

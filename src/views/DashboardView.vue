@@ -49,7 +49,7 @@ export default {
     RouterView
   },
   methods: {
-    handleScroll (e){
+    handleScroll (){
       this.visible = window.scrollY >= 250 ? true : false
     },
     goTop() {

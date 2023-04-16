@@ -10,7 +10,7 @@
       <li class="page-item"
       :class="{ active: page === pages.current_page }"
       v-for="page in pages.total_pages" :key="page + 'page'">
-        <a class="page-link" href="#" v-if="page === pages.current_page" @click.prevent>{{ page }}</a>
+        <p class="page-link" v-if="page === pages.current_page">{{ page }}</p>
         <a class="page-link" href="#" v-else @click.prevent="() => $emit('change-page', page)">{{ page }}</a>
       </li>
       <li class="page-item" :class="{ disabled: !pages.has_next }">

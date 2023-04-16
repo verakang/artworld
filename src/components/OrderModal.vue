@@ -27,7 +27,7 @@
                     <td>
                       <div class="m-2" v-for="(product, i) in orderTemp.products" :key="i">
                         <p class="text-success mb-0">[ {{i}} ]</p>
-                        <p class="mb-2">{{ product.product.title }} x {{ product.qty }} / 單價：{{ product.product.price }} 元</p>
+                        <p class="mb-2">{{ product.product.title }} x {{ product.qty }} / 單價：NT$ {{ numberComma(product.product.price) }}</p>
                       </div>
                     </td>
                   </tr>
@@ -57,7 +57,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-check d-flex justify-content-end align-items-baseline">
-                <p class="mb-0">訂單金額：<span class="text-danger fs-4">{{ orderTemp.total }}</span> 元</p>
+                <p class="mb-0">訂單金額：NT$ <span class="text-danger fs-4">{{ orderTemp.total }}</span></p>
                 <div>
                   <input :id="`{orderTemp.id}`" class="form-check-input ms-4 me-2" type="checkbox" v-model="orderTemp.is_paid">
                   <label class="form-check-label me-3" for="`{orderTemp.id}`">是否付款</label>
@@ -83,6 +83,8 @@
 
 <script>
 import modalMixin from '@/mixins/modalMixin'
+import { mapActions } from 'pinia'
+import cartStore from '@/stores/cart'
 
 export default {
   data () {
@@ -107,6 +109,9 @@ export default {
     order () {
       this.orderTemp = this.order
     }
+  },
+  methods: {
+    ...mapActions(cartStore, ['numberComma'])
   }
 }
 </script>

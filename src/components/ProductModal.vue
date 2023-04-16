@@ -1,6 +1,6 @@
 <template>
   <div ref="modal" id="productModal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-xl">
+    <v-form class="modal-dialog modal-xl" v-slot="{ errors }" @submit="updateProduct">
       <div class="modal-content border-0">
         <div class="modal-header bg-dark text-white">
           <h5 id="productModalLabel" class="modal-title">
@@ -30,14 +30,14 @@
                         <img :src="productTemp.imagesUrl[key]" alt="" class="img-fluid mb-3">
                     </template>
                       <!-- 如沒有欄位 or 最後欄位不是空白，可按新增圖片增加欄位。 -->
-                      <button class="btn btn-outline-primary btn-sm d-block w-100"
+                      <button type="button" class="btn btn-outline-primary btn-sm d-block w-100"
                         v-if="!productTemp.imagesUrl.length || productTemp.imagesUrl[productTemp.imagesUrl.length - 1]"
-                        @click="productTemp.imagesUrl.push('')">
+                        @click="() => productTemp.imagesUrl.push('')">
                         新增圖片
                       </button>
                       <!-- 有欄位 and 最後欄位不是空白，可按刪除圖片按鈕。-->
-                      <button class="btn btn-outline-danger btn-sm d-block w-100" v-else
-                        @click="productTemp.imagesUrl.pop()">
+                      <button type="button" class="btn btn-outline-danger btn-sm d-block w-100" v-else
+                        @click="() => productTemp.imagesUrl.pop()">
                         刪除圖片
                       </button>
                   </div>
@@ -45,34 +45,44 @@
               </div>
               <div class="col-sm-8">
                 <div class="mb-3">
-                  <label for="title" class="form-label">標題</label>
-                  <input id="title" type="text" class="form-control" placeholder="請輸入標題"
-                    v-model="productTemp.title">
+                  <label for="title" class="form-label">標題<span class="text-danger"> *</span></label>
+                  <v-field id="title" name="標題" type="text" class="form-control" placeholder="請輸入標題"
+                    :class="{ 'is-invalid': errors['標題'] }" rules="required"
+                    v-model="productTemp.title"></v-field>
+                  <error-message name="標題" class="invalid-feedback"></error-message>
                 </div>
 
                 <div class="row">
                   <div class="mb-3 col-md-6">
-                    <label for="category" class="form-label">分類</label>
-                    <input id="category" type="text" class="form-control" placeholder="請輸入分類"
-                      v-model="productTemp.category">
+                    <label for="category" class="form-label">分類<span class="text-danger"> *</span></label>
+                    <v-field id="category" name="分類" type="text" class="form-control" placeholder="請輸入分類"
+                      :class="{ 'is-invalid': errors['分類'] }" rules="required"
+                      v-model="productTemp.category"></v-field>
+                    <error-message name="分類" class="invalid-feedback"></error-message>
                   </div>
                   <div class="mb-3 col-md-6">
-                    <label for="price" class="form-label">單位</label>
-                    <input id="unit" type="text" class="form-control" placeholder="請輸入單位"
-                      v-model="productTemp.unit">
+                    <label for="unit" class="form-label">單位<span class="text-danger"> *</span></label>
+                    <v-field id="unit" name="單位" type="text" class="form-control" placeholder="請輸入單位"
+                      :class="{ 'is-invalid': errors['單位'] }" rules="required"
+                      v-model="productTemp.unit"></v-field>
+                    <error-message name="單位" class="invalid-feedback"></error-message>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="mb-3 col-md-6">
-                    <label for="origin_price" class="form-label">原價</label>
-                    <input id="origin_price" type="number" min="0" class="form-control"
-                      placeholder="請輸入原價" v-model.number="productTemp.origin_price">
+                    <label for="origin_price" class="form-label">原價<span class="text-danger"> *</span></label>
+                    <v-field id="origin_price" name="原價" type="number" class="form-control" placeholder="請輸入原價"
+                    :class="{ 'is-invalid': errors['原價'] }" rules="numeric|required"
+                    v-model.number="productTemp.origin_price"></v-field>
+                    <error-message name="原價" class="invalid-feedback"></error-message>
                   </div>
                   <div class="mb-3 col-md-6">
-                    <label for="price" class="form-label">售價</label>
-                    <input id="price" type="number" min="0" class="form-control" placeholder="請輸入售價"
-                      v-model.number="productTemp.price">
+                    <label for="price" class="form-label">售價<span class="text-danger"> *</span></label>                    
+                    <v-field id="price" name="售價" type="number" class="form-control" placeholder="請輸入售價"
+                      :class="{ 'is-invalid': errors['售價'] }" rules="numeric|required"
+                      v-model.number="productTemp.price"></v-field>
+                    <error-message name="售價" class="invalid-feedback"></error-message>
                   </div>
                 </div>
                 <hr>
@@ -103,12 +113,12 @@
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
-          <button type="button" class="btn btn-primary" @click="updateProduct">
+          <button type="submit" class="btn btn-primary" :class="{ 'disabled': isDone === false }">
             確認
           </button>
         </div>
       </div>
-    </div>
+    </v-form>
   </div>
 </template>
 
@@ -119,7 +129,7 @@ export default {
   data () {
     return {
       modal: '',
-      productTemp: { }
+      productTemp: { },
     }
   },
   mixins: [modalMixin],
@@ -133,6 +143,10 @@ export default {
         type: Boolean,
         default: false
       }
+    },
+    isDone: {
+      type: Boolean,
+      default: true
     },
     updateTitle: {
       type: String

@@ -10,9 +10,9 @@
         <li class="breadcrumb-item active" aria-current="page">關於 ArtWorld</li>
       </ol>
     </nav>
-    <div class="shadow p-3 pb-5 bg-body rounded">
-      <img src="../../assets/img/about.png" alt="about banner" class="about__img">
-      <div class="w-75 d-flex flex-column mx-auto mt-5">
+    <div class="w-85 mx-auto shadow p-3 pb-5 bg-body rounded">
+      <img src="@/assets/img/about.png" alt="about banner" class="about__img">
+      <div class="w-85 px-xl-10 mx-auto d-flex flex-column mt-5">
         <p class="fw-normal">
           歡迎來到 ArtWorld 藝享世界！我們致力於為學習者提供高品質、具有啟發性的藝術課程體驗。我們的課程包括花藝、繪畫、攝影、手作等多種藝術形式，適合不同程度的學習者參與。
         </p>

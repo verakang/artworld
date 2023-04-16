@@ -1,8 +1,9 @@
 <template>
+  <VueLoading v-model:active="isLoading" />
   <div class="container py-4">
     <h3 class="my-4">課程列表頁面</h3>
     <div class="text-end mt-4">
-      <button class="btn btn-primary" @click="openModal('create')">
+      <button type="button" class="btn btn-primary" @click="() => openModal('create')">
         建立新的課程
       </button>
     </div>
@@ -32,8 +33,8 @@
           <tr v-for="product in products" :key="product.id">
             <td>{{ product.category }}</td>
             <td>{{ product.title }}</td>
-            <td class="text-start">{{ product.origin_price }}</td>
-            <td class="text-start">{{ product.price }}</td>
+            <td class="text-start">NT$ {{ numberComma(product.origin_price) }}</td>
+            <td class="text-start">NT$ {{ numberComma(product.price) }}</td>
             <td>
               <span class="text-success" v-if="product.is_enabled">啟用</span>
               <span v-else>未啟用</span>
@@ -55,17 +56,19 @@
       </table>
     </div>
     <!-- 分頁元件/外部引入，資料以 props 傳入、用 emit 觸發外層事件-->
-    <pagination class="container mt-5" :pages="page" @change-page="getData"></pagination>
+    <Pagination class="container mt-5" :pages="page" @change-page="getData"></Pagination>
     <!-- Modal -->
-    <productModal ref="productModal" :product="productTemp" :update-product="updateProduct" :update-title="updateTitle"></productModal>
-    <delModal ref="delModal" :product="productTemp" :remove-product="removeProduct"></delModal>
+    <ProductModal ref="productModal" :product="productTemp" :update-product="updateProduct" :update-title="updateTitle"></ProductModal>
+    <DelModal ref="delModal" :product="productTemp" :remove-product="removeProduct"></DelModal>
   </div>
 </template>
 
 <script>
-import pagination from '../../components/PaginationView.vue'
-import productModal from '../../components/ProductModal.vue'
-import delModal from '../../components/DelModal.vue'
+import { mapActions } from 'pinia'
+import cartStore from '@/stores/cart'
+import Pagination from '@/components/PaginationComponent.vue'
+import ProductModal from '@/components/ProductModal.vue'
+import DelModal from '@/components/DelModal.vue'
 import Swal from 'sweetalert2'
 
 const { VITE_URL, VITE_PATH } = import.meta.env
@@ -79,11 +82,13 @@ export default {
       },
       isNew: false,
       updateTitle: '新增產品',
-      page: {}
+      page: {},
+      isLoading: false,
+      isDone: true
     }
   },
   components: {
-    pagination, productModal, delModal
+    Pagination, ProductModal, DelModal
   },
   methods: {
     getData (page = 1) {
@@ -94,9 +99,23 @@ export default {
           // 將取得的資料存在 data
           this.products = res.data.products
           this.page = res.data.pagination
+          this.isLoading = false 
         })
         .catch((err) => {
-          alert(err.response.data.message)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            color: 'white',
+            iconColor: 'white',
+            customClass: {
+              popup: 'colored-toast'
+            },
+            title: `${err.response.data.message}`,
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            toast: true
+          })
         })
     },
     openModal (state, product) {
@@ -136,6 +155,7 @@ export default {
       }
     },
     updateProduct () {
+      this.isDone = false
       // url、method 預設為新增資料
       let url = `${VITE_URL}/v2/api/${VITE_PATH}/admin/product`
       let method = 'post'
@@ -146,6 +166,7 @@ export default {
       }
       this.$http[method](url, { data: this.productTemp })
         .then((res) => {
+          this.isDone = true
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -217,9 +238,11 @@ export default {
             toast: true
           })
         })
-    }
+    },
+    ...mapActions(cartStore, ['numberComma'])
   },
   mounted () {
+    this.isLoading = true
     this.getData()
   }
 }

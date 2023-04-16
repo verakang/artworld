@@ -1,5 +1,5 @@
 <template>
-  <VueLoading v-model:active="isLoading"></VueLoading>
+  <VueLoading v-model:active="isLoading" />
   <div class="container py-5">
     <nav class="my-4" style="`--bs-breadcrumb-divider: >;`" aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -7,13 +7,13 @@
         <li class="breadcrumb-item active" aria-current="page">課程列表</li>
       </ol>
     </nav>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-      <div class="col" v-for="product in products" :key="product.id">
-        <div class="card h-100 border-primary">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4">
+      <div class="col position-relative" v-for="product in products" :key="product.id">
+        <RouterLink :to="`/course/${product?.id}`" class="card h-100 border-primary">
           <div class="overflow-hidden" style="height: 180px;">
-            <RouterLink :to="`/course/${product?.id}`" class="card-title h5">
+            <div :to="`/course/${product?.id}`" class="card-title h5">
               <img :src="product.imageUrl" class="courses__img card-img-top" alt="課程圖示" style="height: 180px;">
-            </RouterLink>
+            </div>
           </div>
           <div class="card-body">
             <div class="d-flex justify-content-between mb-2">
@@ -24,26 +24,27 @@
               <p class="mb-1 h6"><i class="bi bi-clock me-2"></i>{{ product.datetime }}</p>
               <p class="h6"><i class="bi bi-people-fill me-2"></i>{{ product.total_quota }}</p>
             </div>
-            <div class="h5 mt-2" v-if="product.price === product.origin_price">{{ product.price }} 元</div>
+            <div class="h5 mt-2" v-if="product.price === product.origin_price">NT$ {{ numberComma(product.price) }}</div>
             <div v-else class="my-2">
-              <del class="h6">原價 {{ product.origin_price }} 元</del>
-              <div class="h5">特價 {{ product.price }} 元</div>
+              <del class="h6">原價 NT$ {{ numberComma(product.origin_price) }}</del>
+              <div class="h5">特價 NT$ {{ numberComma(product.price) }}</div>
             </div>
           </div>
-          <a class="btn btn-outline-primary ms-auto me-3 mb-3" @click="addToCart(product.id,qty)">加入購物車</a>
-        </div>
+        </RouterLink>
+        <a :class="{ 'disabled': isDone === product.id }" class="btn btn-outline-primary me-4 mb-3 position-absolute bottom-0 end-0" @click="addToCart(product.id,qty)">加入購物車</a>
       </div>
     </div>
-    <pagination class="container mt-9" :pages="page" @change-page="getData"></pagination>
+    <Pagination class="container mt-9" :pages="page" @change-page="getData"></Pagination>
   </div>
 </template>
 
 <script>
   import { RouterLink } from 'vue-router'
-  import pagination from '../../components/PaginationView.vue'
-  import { mapActions } from 'pinia'
-  import cartStore from '../../stores/cart'
+  import Pagination from '@/components/PaginationComponent.vue'
+  import { mapState, mapActions } from 'pinia'
+  import cartStore from '@/stores/cart'
   const { VITE_URL, VITE_PATH } = import.meta.env
+  import Swal from 'sweetalert2'
 
   export default {
     data () {
@@ -54,7 +55,10 @@
       }
     },
     components: {
-      RouterLink, pagination
+      RouterLink, Pagination
+    },
+    computed: {
+    ...mapState(cartStore, ['isDone'])
     },
     methods: {
       getData (page = 1) {
@@ -67,7 +71,20 @@
             window.scrollTo(0, 0);
           })
           .catch((err) => {
-            alert(err.response.data.message)
+            Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            color: 'white',
+            iconColor: 'white',
+            customClass: {
+              popup: 'colored-toast'
+            },
+            title: `${err.response.data.message}，請再次確認。`,
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: false,
+            toast: true
+            })
           })
       },
       getProducts () {
@@ -76,15 +93,29 @@
           .then((res) => {
             this.products = res.data.products
             this.products = this.products.reverse()
+            this.isLoading = false
+          })
+          .catch((err) => {
+            Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            color: 'white',
+            iconColor: 'white',
+            customClass: {
+              popup: 'colored-toast'
+            },
+            title: `${err.response.data.message}，請再次確認。`,
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: false,
+            toast: true
+            })
           })
       },
-      ...mapActions(cartStore, ['addToCart'])
+      ...mapActions(cartStore, ['addToCart','numberComma'])
     },
     mounted () {
       this.isLoading = true
-      setTimeout(() => {
-        this.isLoading = false
-      },800)
       this.getData()
       this.getProducts()
     }
