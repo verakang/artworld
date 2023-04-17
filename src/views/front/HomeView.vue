@@ -350,4 +350,8 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+iframe {
+  max-width: 100%;
+}
 </style>

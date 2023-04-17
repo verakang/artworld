@@ -38,13 +38,13 @@
         <div>
           <RouterLink to="/" class="fs-3 font-rufina">Art / World.</RouterLink>
         </div>
-        <ul class="d-flex list-unstyled mt-3 mb-0">
+        <ul class="sns_list d-flex list-unstyled mt-3 mb-0">
           <li><a href="https://line.me/zh-hant/" target="_blank"><i class="bi bi-line fs-4"></i></a></li>
           <li class="mx-3"><a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook fs-4"></i></a></li>
           <li><a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram fs-4"></i></a></li>
         </ul>
       </div>
-      <div class="ms-auto text-end">
+      <div class="connect_list ms-auto text-end">
         <h3 class="fs-4">藝享世界</h3>
         <ul class="list-unstyled fs-7">
           <li>藝術 ｜生活 ｜ 風格</li>
@@ -110,5 +110,8 @@ export default {
 <style>
 .gotop:hover {
   cursor: pointer;
+}
+.sns_list i:hover {
+  color: #919191;
 }
 </style>

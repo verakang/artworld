@@ -37,6 +37,24 @@
       </div>
     </div>
   </div>
+  <div class="container-fluid py-5 room">
+    <h3 class="text-center mb-3">環境介紹</h3>
+    <div class="container row w-85 mx-auto">
+      <div class="p-2 col-12 col-md-6 col-lg-4">
+        <img src="https://images.unsplash.com/photo-1594125674965-70d796b6693f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" 
+        alt="教室圖片" class="m-2" style="max-width: 100%;">
+      </div>
+      <div class="p-2 col-12 col-md-6 col-lg-4">
+        <img src="https://images.unsplash.com/photo-1594125675324-a5370a65778d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" 
+        alt="教室圖片" class="m-2" style="max-width: 100%;">
+      </div>
+      <div class="p-2 col-12 col-md-6 col-lg-4">
+        <img src="https://images.unsplash.com/photo-1594125675297-a8dee22b0350?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" 
+        alt="教室圖片" class="m-2" style="max-width: 100%;">
+      </div>
+
+    </div>
+  </div>
 </template>
 
 <style>
@@ -47,5 +65,12 @@
 p {
   text-align: justify;
   font-size: 18px;
+}
+.room {
+  background-image: url(https://images.unsplash.com/photo-1600172454520-134a542a2255?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80);
+  background-position: center bottom;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>
