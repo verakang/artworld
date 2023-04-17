@@ -10,7 +10,7 @@
         <li class="breadcrumb-item active" aria-current="page">關於 ArtWorld</li>
       </ol>
     </nav>
-    <div class="w-85 mx-auto shadow p-3 pb-5 bg-body rounded">
+    <div class="about w-85 mx-auto shadow p-0 pb-5 bg-body">
       <img src="@/assets/img/about.png" alt="about banner" class="about__img">
       <div class="w-85 px-xl-10 mx-auto d-flex flex-column mt-5">
         <p class="fw-normal">
@@ -58,6 +58,11 @@
 </template>
 
 <style>
+.about {
+  background-image: url(https://images.unsplash.com/photo-1615800098779-1be32e60cca3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=710&q=80);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .about__img {
   width: 100%;
   height: 200px;
