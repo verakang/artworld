@@ -133,7 +133,6 @@
           .get(`${VITE_URL}/v2/api/${VITE_PATH}/products?category=${category}`)
           .then((res) => {
             this.products = res.data.products
-            this.products = this.products.reverse()
             this.isLoading = false
             this.category = category
             this.getData()
