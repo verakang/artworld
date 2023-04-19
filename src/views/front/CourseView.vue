@@ -57,6 +57,36 @@
         </div>
       </div>
     </div>
+    <div class="d-none d-lg-block">
+      <h4 class="fs-5 mt-5 pt-5 mb-4 border-top" v-if="moreProduct.length != 0">相關課程</h4>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4">
+        <div class="col position-relative" v-for="item in moreProduct" :key="item.id">
+          <RouterLink :to="`${item?.id}`" class="card h-100 border-primary">
+            <div class="overflow-hidden" style="height: 180px;">
+              <div class="card-title h5">
+                <img :src="item.imageUrl" class="courses__img card-img-top" alt="課程圖示" style="height: 180px;">
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-2">
+                <RouterLink :to="`${item?.id}`" class="card-title h5 mb-0">{{ item?.title }}</RouterLink>
+                <h6 class="badge bg-dark p-2 mb-0"> #{{ item.category }}</h6>
+              </div>
+              <div>
+                <p class="mb-1 h6"><i class="bi bi-clock me-2"></i>{{ item.datetime }}</p>
+                <p class="h6"><i class="bi bi-people-fill me-2"></i>{{ item.total_quota }}</p>
+              </div>
+              <div class="h5 mt-2" v-if="item.price === item.origin_price">NT$ {{ numberComma(item.price) }}</div>
+              <div v-else class="my-2">
+                <del class="h6">原價 NT$ {{ numberComma(item.origin_price) }}</del>
+                <div class="h5">特價 NT$ {{ numberComma(item.price) }}</div>
+              </div>
+            </div>
+          </RouterLink>
+          <a :class="{ 'disabled': isDone === item.id }" class="btn btn-outline-primary me-4 mb-3 position-absolute bottom-0 end-0" @click="() => addToCart(product.id,qty)">加入購物車</a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -71,7 +101,9 @@ export default {
     return {
       product: {},
       isLoading: false,
-      tempUrl: ''
+      tempUrl: '',
+      category: '',
+      moreProduct: []
     }
   },
   computed: {
@@ -87,6 +119,8 @@ export default {
           this.product = res.data.product
           this.tempUrl = res.data.product.imageUrl
           this.isLoading = false
+          this.category = this.product.category
+          this.getCategory ()
         })
         .catch((err) => {
           Swal.fire({
@@ -104,6 +138,38 @@ export default {
             toast: true
           })
           this.$router.push('/courses')
+        })
+    },
+    getCategory () {
+      this.$http
+        .get(`${VITE_URL}/v2/api/${VITE_PATH}/products?category=${this.category}`)
+        .then((res) => {
+          let tempProduct = ''
+          tempProduct = res.data.products
+          tempProduct = tempProduct.reverse()
+          tempProduct.forEach(item => {
+            if(item.id !== this.product.id){
+              this.moreProduct.push(item)
+            }
+          })
+          this.moreProduct = this.moreProduct.splice(0,3)
+          this.isLoading = false
+        })
+        .catch((err) => {
+          Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          color: 'white',
+          iconColor: 'white',
+          customClass: {
+            popup: 'colored-toast'
+          },
+          title: `${err.response.data.message}，請再次確認。`,
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: false,
+          toast: true
+          })
         })
     },
     ...mapActions(cartStore, ['addToCart','numberComma'])

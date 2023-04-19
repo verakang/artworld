@@ -52,7 +52,6 @@
         <img src="https://images.unsplash.com/photo-1594125675297-a8dee22b0350?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" 
         alt="教室圖片" class="m-2" style="max-width: 100%;">
       </div>
-
     </div>
   </div>
 </template>

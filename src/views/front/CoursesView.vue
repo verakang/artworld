@@ -1,17 +1,27 @@
 <template>
   <VueLoading v-model:active="isLoading" />
   <div class="container py-5">
-    <nav class="my-4" style="`--bs-breadcrumb-divider: >;`" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
-        <li class="breadcrumb-item active" aria-current="page">課程列表</li>
-      </ol>
-    </nav>
+    <div class="d-flex align-items-center justify-content-between">
+      <nav class="my-4" style="`--bs-breadcrumb-divider: >;`" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
+          <li class="breadcrumb-item active" aria-current="page">課程列表</li>
+        </ol>
+      </nav>
+      <ul class="list-unstyled d-flex">
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '全部'}" type="button" @click.prevent="() => getProducts()">全部</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '美術'}" type="button" @click.prevent="() => setCategory('美術')">美術</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '花藝'}" type="button" @click.prevent="() => setCategory('花藝')">花藝</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '生活'}" type="button" @click.prevent="() => setCategory('生活')">生活</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '攝影'}" type="button" @click.prevent="() => setCategory('攝影')">攝影</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '設計'}" type="button" @click.prevent="() => setCategory('設計')">設計</button></li>
+      </ul>
+    </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4">
       <div class="col position-relative" v-for="product in products" :key="product.id">
         <RouterLink :to="`/course/${product?.id}`" class="card h-100 border-primary">
           <div class="overflow-hidden" style="height: 180px;">
-            <div :to="`/course/${product?.id}`" class="card-title h5">
+            <div class="card-title h5">
               <img :src="product.imageUrl" class="courses__img card-img-top" alt="課程圖示" style="height: 180px;">
             </div>
           </div>
@@ -52,6 +62,7 @@
         products: [],
         page: {},
         isLoading: false,
+        category: ''
       }
     },
     components: {
@@ -62,7 +73,10 @@
     },
     methods: {
       getData (page = 1) {
-        const url = `${VITE_URL}/v2/api/${VITE_PATH}/products/?page=${page}`
+        let url = `${VITE_URL}/v2/api/${VITE_PATH}/products/?page=${page}`
+        if(this.category !== '全部'){
+          url = `${VITE_URL}/v2/api/${VITE_PATH}/products/?page=${page}&category=${this.category}`
+        }
         this.$http
           .get(url)
           .then((res) => {
@@ -94,6 +108,35 @@
             this.products = res.data.products
             this.products = this.products.reverse()
             this.isLoading = false
+            this.category = '全部'
+            this.getData()
+          })
+          .catch((err) => {
+            Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            color: 'white',
+            iconColor: 'white',
+            customClass: {
+              popup: 'colored-toast'
+            },
+            title: `${err.response.data.message}，請再次確認。`,
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: false,
+            toast: true
+            })
+          })
+      },
+      setCategory (category) {
+        this.$http
+          .get(`${VITE_URL}/v2/api/${VITE_PATH}/products?category=${category}`)
+          .then((res) => {
+            this.products = res.data.products
+            this.products = this.products.reverse()
+            this.isLoading = false
+            this.category = category
+            this.getData()
           })
           .catch((err) => {
             Swal.fire({
