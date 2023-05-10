@@ -9,12 +9,12 @@
         </ol>
       </nav>
       <ul class="list-unstyled d-flex">
-        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '全部'}" type="button" @click.prevent="() => getProducts()">全部</button></li>
-        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '美術'}" type="button" @click.prevent="() => setCategory('美術')">美術</button></li>
-        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '花藝'}" type="button" @click.prevent="() => setCategory('花藝')">花藝</button></li>
-        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '生活'}" type="button" @click.prevent="() => setCategory('生活')">生活</button></li>
-        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '攝影'}" type="button" @click.prevent="() => setCategory('攝影')">攝影</button></li>
-        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '設計'}" type="button" @click.prevent="() => setCategory('設計')">設計</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '全部'}" type="button" @click="() => getProducts()">全部</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '美術'}" type="button" @click="() => setCategory('美術')">美術</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '花藝'}" type="button" @click="() => setCategory('花藝')">花藝</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '生活'}" type="button" @click="() => setCategory('生活')">生活</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '攝影'}" type="button" @click="() => setCategory('攝影')">攝影</button></li>
+        <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '設計'}" type="button" @click="() => setCategory('設計')">設計</button></li>
       </ul>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4">

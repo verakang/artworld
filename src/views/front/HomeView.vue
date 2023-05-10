@@ -54,12 +54,13 @@
     <div class="container">
       <div class="news__content w-85 mx-auto">
         <div class="banner__title">
-          <h2 class="h1 font-rufina pt-4">News /</h2>
-          <p class="fs-5">最新消息</p>
+          <div class="position-relative">
+            <h2 class="h1 font-rufina pt-4">News /</h2>
+            <p class="fs-5">最新消息</p>
+            <RouterLink :to="`/newslist`" class="fs-7 position-absolute end-0 top-50 btn btn-outline-primary p-2 rounded">View More<i class="bi bi-arrow-right-short"></i></RouterLink>
+          </div>
           <ul class="list-unstyled news__list pb-4">
-            <li class="py-4 px-3 border-bottom d-flex align-items-center position-relative"><span>2023.01.11</span><a href="#" class="ms-3 stretched-link" @click.prevent="() => openNews(0)">限時優惠來囉！！</a><i class="bi bi-dot fs-3 d-inline-block ms-auto"></i></li>
-            <li class="py-4 px-3 border-bottom d-flex align-items-center position-relative"><span>2023.01.07</span><a href="#" class="ms-3 stretched-link" @click.prevent="() => openNews(1)">新課預告！--「風景攝影」</a><i class="bi bi-dot fs-3 d-inline-block ms-auto"></i></li>
-            <li class="py-4 px-3 d-flex align-items-center position-relative"><span>2023.01.04</span><a href="#" class="ms-3 stretched-link" @click.prevent="() => openNews(2)">課程異動通知！「繪畫基礎」</a><i class="bi bi-dot fs-3 d-inline-block ms-auto"></i></li>
+            <li v-for="item in mewsTemp" :key="item.id" class="py-4 px-3 border-bottom d-flex align-items-center position-relative"><span>{{ $moment(new Date(item.create_at * 1000)).format('YYYY-MM-DD') }}</span><RouterLink :to="`/newsitem/${item?.id}`" class="ms-3 stretched-link">{{ item.title }}</RouterLink><i class="bi bi-dot fs-3 d-inline-block ms-auto"></i></li>
           </ul>
         </div>
       </div>
@@ -70,15 +71,14 @@
     <div class="container">
       <div class="news__content w-75">
         <div class="row">
-          <div class="col-3">
-          <h2 class="h1 font-rufina">News /</h2>
-          <p class="fs-5">最新消息</p>
+          <div class="col-3 position-relative">
+            <h2 class="h1 font-rufina">News /</h2>
+            <p class="fs-5">最新消息</p>
+            <RouterLink :to="`/newslist`" class="fs-7 position-absolute bottom-0 mb-5 btn btn-outline-primary py-3 rounded" @click="">View More<i class="bi bi-arrow-right-short ps-1"></i></RouterLink>
           </div>
           <div class="col-9">
             <ul class="list-unstyled news__list">
-              <li class="py-4 px-3 border-bottom d-flex align-items-center position-relative"><span>2023.01.11</span><a href="#" class="ms-3 stretched-link" @click.prevent="() => openNews(0)">限時優惠來囉！！</a><i class="bi bi-dot fs-3 d-inline-block ms-auto"></i></li>
-              <li class="py-4 px-3 border-bottom d-flex align-items-center position-relative"><span>2023.01.07</span><a href="#" class="ms-3 stretched-link" @click.prevent="() => openNews(1)">新課預告！--「風景攝影」</a><i class="bi bi-dot fs-3 d-inline-block ms-auto"></i></li>
-              <li class="py-4 px-3 d-flex align-items-center position-relative"><span>2023.01.04</span><a href="#" class="ms-3 stretched-link" @click.prevent="() => openNews(2)">課程異動通知！「繪畫基礎」</a><i class="bi bi-dot fs-3 d-inline-block ms-auto"></i></li>
+              <li v-for="item in mewsTemp" :key="item.id" class="py-4 px-3 border-bottom d-flex align-items-center position-relative"><span>{{ $moment(new Date(item.create_at * 1000)).format('YYYY-MM-DD') }}</span><RouterLink :to="`/newsitem/${item?.id}`" class="ms-3 stretched-link">{{ item.title }}</RouterLink><i class="bi bi-dot fs-3 d-inline-block ms-auto"></i></li>
             </ul>
           </div>
         </div>
@@ -237,7 +237,9 @@
       return {
         products: [],
         isLoading: false,
-        visible: false
+        visible: false,
+        news: [],
+        mewsTemp: []
       }
     },
     components: {
@@ -270,6 +272,31 @@
             })
           })
       },
+      getNews () {
+        const url = `${VITE_URL}/v2/api/${VITE_PATH}/articles`
+        this.$http
+          .get(url)
+          .then((res) => {
+            this.news = res.data.articles
+            this.mewsTemp = this.news.slice(0,3)
+          })
+          .catch((err) => {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              color: 'white',
+              iconColor: 'white',
+              customClass: {
+                popup: 'colored-toast'
+              },
+              title: `${err.response.data.message}`,
+              showConfirmButton: false,
+              timer: 1000,
+              timerProgressBar: true,
+              toast: true
+            })
+          })
+      },
       handleScroll (){
         this.visible = window.scrollY != 0 ? true : false
       },
@@ -279,32 +306,12 @@
           right: 0,
           behavior: 'smooth'
         })
-      },
-      openNews(id) {
-        const data = [
-          {
-            'title':'限時優惠來囉！！',
-            'content':'ArtWorld 將舉辦一次限時優惠活動，所有新註冊的學生都可以享受10%的折扣優惠。這是一個難得的機會，請趕快註冊參加我們的藝術課程吧！'
-          },
-          {
-            'title':'新課預告！',
-            'content':'ArtWorld 即將推出全新的攝影課程，主題為「風景攝影」。這個課程將由業界知名攝影師主講，教授如何捕捉美麗的風景並拍攝出精美的照片。課程將包括理論講解和實踐操作，歡迎所有攝影愛好者報名參加。'
-          },
-          {
-            'title':'課程異動通知！',
-            'content':'「繪畫基礎」課程時間調整！原定每週二晚上7點到9點的「繪畫基礎」課程，即日起改為每週三晚上7點到9點上課。我們希望這個時間調整可以更好地配合學生們的行程。如有任何疑問，請聯繫我們的線上客服人員。'
-          }
-        ]
-        Swal.fire({
-          title: `${data[id].title}`,
-          html: `<p class="text-start fw-normal">${data[id].content}<p>`,
-          showConfirmButton: false,
-        })
       }
     },
     mounted () {
       this.isLoading = true
       this.getProducts()
+      this.getNews ()
     }
   }
 </script>

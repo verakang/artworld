@@ -16,6 +16,14 @@ const router = createRouter({
           component: () => import('../views/front/AboutView.vue')
         },
         {
+          path: 'newslist',
+          component: () => import('../views/front/NewsList.vue')
+        },
+        {
+          path: 'newsitem/:id',
+          component: () => import('../views/front/NewsItem.vue')
+        },
+        {
           path: 'courses',
           component: () => import('../views/front/CoursesView.vue'),
         },
@@ -61,6 +69,10 @@ const router = createRouter({
           path: 'orders',
           component: () => import('../views/admin/AdminOrders.vue'),
         },
+        {
+          path: 'news',
+          component: () => import('../views/admin/AdminNews.vue'),
+        }
       ]
     }
   ]

@@ -95,7 +95,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="content" class="form-label">課程說明</label>
-                  <textarea id="description" type="text" class="form-control" placeholder="請輸入課程說明"
+                  <textarea id="content" type="text" class="form-control" placeholder="請輸入課程說明"
                     v-model="productTemp.content">
                   </textarea>
                 </div>

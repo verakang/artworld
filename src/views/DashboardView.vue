@@ -13,7 +13,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup" ref="collapse">
           <ul class="d-flex ms-auto list-unstyled m-0 navbar-nav font-rufina text-center font-noto">
-            <li><RouterLink to="/admin/courses" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">產品列表</RouterLink></li>
+            <li><RouterLink to="/admin/news" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">最新消息</RouterLink></li>
+            <li class="ms-lg-3"><RouterLink to="/admin/courses" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">產品列表</RouterLink></li>
             <li class="ms-lg-3"><RouterLink to="/admin/orders" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">訂單列表</RouterLink></li>
             <li class="ms-lg-3 "><a class="p-3 pb-2 pt-4 py-ms-2" @click.prevent="logout" @click="closeNavbar">登出</a></li>
           </ul>

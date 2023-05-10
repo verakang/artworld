@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-5">
+  <div class="cart container py-5">
     <nav style="`--bs-breadcrumb-divider: >;`" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
@@ -196,5 +196,8 @@ export default {
 <style>
 .cartNull {
   min-height: calc(100vh - 638px);
+}
+.cart {
+  min-height: calc(100vh - 368px);
 }
 </style>

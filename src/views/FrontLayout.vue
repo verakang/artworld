@@ -14,6 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup" ref="collapse">
           <ul class="d-flex ms-auto list-unstyled m-0 navbar-nav font-rufina text-center">
             <li><RouterLink to="/about" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">About</RouterLink></li>
+            <li class="ms-lg-3"><RouterLink to="/newslist" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">News</RouterLink></li>
             <li class="ms-lg-3"><RouterLink to="/courses" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">Courses</RouterLink></li>
             <li class="ms-lg-3">
               <RouterLink to="/cart" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">
