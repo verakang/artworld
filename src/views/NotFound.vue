@@ -15,9 +15,3 @@
     <RouterLink to="/" class="btn btn-primary mt-5">回首頁</RouterLink>
   </main>
 </template>
-
-<style>
-main {
-  min-height: calc(100vh - 368px);
-}
-</style>

@@ -16,7 +16,7 @@
               <div class="card-body position-relative pb-6 h-100">
                 <p class="card-title">＃{{ item.description }}</p>
                 <h5>{{ item.title }}</h5>
-                <RouterLink :to="`/newsitem/${item?.id}`" class="btn btn-primary btn-sm position-absolute end-0 bottom-0 m-2">更多詳情</RouterLink>
+                <RouterLink :to="`/newsitem/${item?.id}`" class="stretched-link"><button class="btn btn-primary btn-sm position-absolute end-0 bottom-0 m-2" type="button">更多詳情</button></RouterLink>
               </div>
             </div>
           </div>

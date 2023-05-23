@@ -96,6 +96,9 @@ export default {
           this.status = true
           this.$router.push('/admin/courses')
         })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   },
   mounted() {
@@ -107,9 +110,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .login {
-    min-height: calc(100vh - 368px);
-  }
-</style>

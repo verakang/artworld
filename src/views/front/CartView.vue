@@ -1,5 +1,5 @@
 <template>
-  <div class="cart container py-5">
+  <div class="container py-5">
     <nav style="`--bs-breadcrumb-divider: >;`" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
@@ -11,7 +11,7 @@
     </div>
     <div>
       <div v-if="carts.length === 0">
-        <div class="cartNull container d-flex flex-column justify-content-center align-items-center">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
           <h3>購物車內沒有課程</h3>
           <RouterLink to="/courses" class="btn btn-primary mt-3">查看課程</RouterLink>
         </div>
@@ -23,8 +23,8 @@
               <tr>
                 <th></th>
                 <th>品名</th>
-                <th class="text-center" style="width: 100px">數量/單位</th>
-                <th class="text-center" style="width: 100px">單價</th>
+                <th class="text-center" style="width: 90px">數量/單位</th>
+                <th class="text-center" style="width: 85px">單價</th>
               </tr>
             </thead>
             <tbody>
@@ -36,22 +36,22 @@
                       <span v-else><i class="bi bi-x-circle"></i></span>
                     </button>
                     </td>
-                  <td class="d-flex flex-column flex-xl-row align-items-xl-center">
+                  <td class="d-flex flex-column flex-xl-row align-items-xl-center px-0">
                     <router-link :to="`/course/${ item.product?.id}`" class="card-title h5" style="min-width: 50%">
                       <img :src="item.product.imageUrl" style="width: 100%; max-height: 150px;">
                     </router-link>
                     <div class="m-3">
-                      <p class="mb-1">{{ item.product.title }}</p>
+                      <p class="mb-1 cart-content">{{ item.product.title }}</p>
                       <p class="d-none d-sm-block"><i class="bi bi-clock me-2"></i>{{ item.product.datetime }}</p>
                       <div class=" text-success" v-if="item.coupon">
                         已套用優惠券
                       </div>
                     </div>
                   </td>
-                  <td class="text-center">
+                  <td class="text-center cart-content px-0">
                     {{ item.qty }} / {{ item.product.unit }}
                   </td>
-                  <td class="text-center">
+                  <td class="text-center cart-content px-0">
                     <small v-if="carts.final_total !== carts.total" class="text-success">折扣價：</small>
                     NT$ {{ numberComma(item.total) }}
                   </td>
@@ -60,8 +60,8 @@
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="3" class="text-end">總計</td>
-                <td class="text-center">NT$ {{ numberComma(total) }}</td>
+                <td colspan="3" class="text-end pe-3">總計</td>
+                <td class="text-center cart-content px-0">NT$ {{ numberComma(total) }}</td>
               </tr>
               <tr :class="{'d-none': total === final_total}">
                 <td colspan="3" class="text-end text-success">折扣價</td>
@@ -194,10 +194,9 @@ export default {
 </script>
 
 <style>
-.cartNull {
-  min-height: calc(100vh - 638px);
-}
-.cart {
-  min-height: calc(100vh - 368px);
+@media(max-width: 414px) {
+  .cart-content {
+    font-size: 12px;
+  }
 }
 </style>

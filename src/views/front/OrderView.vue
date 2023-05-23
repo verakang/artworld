@@ -25,17 +25,17 @@
                       <img :src="item.product.imageUrl" style="width: 100%; max-height: 150px;">
                     </router-link>
                     <div class="m-3">
-                      <p class="mb-1">{{ item.product.title }}</p>
+                      <p class="mb-1 order-content">{{ item.product.title }}</p>
                       <p class="d-none d-sm-block"><i class="bi bi-clock me-2"></i>{{ item.product.datetime }}</p>
                       <div class=" text-success" v-if="item.coupon">
                         已套用優惠券
                       </div>
                     </div>
                   </td>
-                  <td class="text-center">
+                  <td class="text-center order-content">
                     {{ item.qty }} / {{ item.product.unit }}
                   </td>
-                  <td class="text-center">
+                  <td class="text-center order-content">
                     NT$ {{ numberComma(item.total) }}
                   </td>
                 </tr>
@@ -44,7 +44,7 @@
             <tfoot>
               <tr>
                 <td colspan="2" class="text-end">總計</td>
-                <td class="text-center">NT$ {{ numberComma(order.total) }}</td>
+                <td class="text-center order-content">NT$ {{ numberComma(order.total) }}</td>
               </tr>
             </tfoot>
           </table>
@@ -198,7 +198,9 @@ export default {
 </script>
 
 <style>
-.cartNull {
-  min-height: calc(100vh - 638px);
+@media(max-width: 414px) {
+  .order-content {
+    font-size: 14px;
+  }
 }
 </style>

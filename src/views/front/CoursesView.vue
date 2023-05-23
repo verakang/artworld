@@ -1,14 +1,14 @@
 <template>
   <VueLoading v-model:active="isLoading" />
   <div class="container py-5">
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="d-lg-flex align-items-center justify-content-between">
       <nav class="my-4" style="`--bs-breadcrumb-divider: >;`" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
           <li class="breadcrumb-item active" aria-current="page">課程列表</li>
         </ol>
       </nav>
-      <ul class="list-unstyled d-flex">
+      <ul class="list-unstyled d-flex flex-wrap">
         <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '全部'}" type="button" @click="() => getProducts()">全部</button></li>
         <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '美術'}" type="button" @click="() => setCategory('美術')">美術</button></li>
         <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '花藝'}" type="button" @click="() => setCategory('花藝')">花藝</button></li>
@@ -17,7 +17,7 @@
         <li><button class="btn btn-outline-primary btn-sm m-2" :class="{ 'btn-primary text-white': category === '設計'}" type="button" @click="() => setCategory('設計')">設計</button></li>
       </ul>
     </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4">
+    <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-4 g-4">
       <div class="col position-relative" v-for="product in products" :key="product.id">
         <RouterLink :to="`/course/${product?.id}`" class="card h-100 border-primary">
           <div class="overflow-hidden" style="height: 180px;">
@@ -165,14 +165,14 @@
 </script>
 
 <style>
-  a:hover {
-    cursor: pointer;
-  }
   .courses__img {
     transition: all 0.5s ease
   }
-  .courses__img:hover{
-    transform: scale(1.1);
+  a:hover {
     cursor: pointer;
+    .courses__img {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
   }
 </style>

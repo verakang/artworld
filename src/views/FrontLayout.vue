@@ -19,7 +19,7 @@
             <li class="ms-lg-3">
               <RouterLink to="/cart" class="p-3 pb-2 pt-4 py-ms-2" @click="closeNavbar">
                 <i class="h5 bi bi-bag-fill position-relative">
-                  <span class="badge rounded-pill bg-danger position-absolute" style="top: -10px; right: -14px; width: 24px; height: 24px; font-size: 14px;">{{ carts.length }}</span>
+                  <span class="badge rounded-pill bg-danger position-absolute" style="top: -10px; right: -14px; width: 24px; height: 24px; font-size: 14px;" v-show="carts.length != 0">{{ carts.length }}</span>
                 </i>
               </RouterLink>
             </li>
@@ -29,7 +29,7 @@
     </nav>
   </div>
 
-  <div class="mt-9">
+  <div class="mt-9 front-content">
     <RouterView />
   </div>
 
@@ -114,5 +114,8 @@ export default {
 }
 .sns_list i:hover {
   color: #919191;
+}
+.front-content {
+  min-height: calc(100vh - 368px);
 }
 </style>
