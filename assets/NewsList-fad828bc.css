@@ -1,0 +1,1 @@
+.newsimgs:after{content:"";position:absolute;top:0;right:0;width:100%;height:100%;background-color:#fafafab3;z-index:1}.newsimgs:hover{cursor:pointer;background-color:#fafafab3}.newsimgs>.card-body{z-index:2}
