@@ -3,7 +3,6 @@ import { createPinia } from 'pinia'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import './assets/all.scss'
-import 'bootstrap'
 import moment from 'moment'
 
 import Loading from 'vue-loading-overlay';
