@@ -1,1 +1,0 @@
-import{_ as e,o as s,c,b as o}from"./index-cf737877.js";const t={},n={class:"container my-5"},_=o("h2",null," 這是會員頁面 ",-1),a=[_];function r(i,d){return s(),c("main",n,a)}const m=e(t,[["render",r]]);export{m as default};
