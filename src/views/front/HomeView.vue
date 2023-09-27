@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row g-2">
         <div class="col-12 col-md-4">
-          <div class="card border-0 text-white" style="height: 320px;">
+          <div class="card border-0 text-whit h-100e" style="height: 320px;">
             <img :src="products[0]?.imageUrl" class="card-img h-100" alt="course image" style="border-radius: 80px 20px 20px 20px">
             <div class="card-img-overlay banner__item overflow-hidden d-flex justify-content-center align-items-center" style="border-radius: 80px 20px 20px 20px">
               <div class="banner__title">
@@ -122,104 +122,112 @@
   </section>
   <section class="feedback container py-9">
     <h2 class="h1 font-rufina text-center mb-0">Feedback / <span class="fs-5 align-middle">學員回饋</span></h2>
-    <div id="carouselExampleIndicators" class="carousel carousel-dark slide mt-4 pt-3 pb-0 pb-lg-2" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner" style="height: 320px">
-        <div class="carousel-item active">
-          <div class="d-block d-flex justify-content-center align-items-center">
-            <div class="card-group w-80">
-              <div class="card border-0 px-4 px-lg-0">
-                <div class="card-body d-flex flex-column h-100">
-                  <h5 class="card-title mb-4 h5 text-center fw-bold"># 大人的水彩課</h5>
-                  <p class="card-text fs-6">美琪老師的水彩課，簡直讓我愛上了這個媒材！老師很親切，教學風格也非常好，讓我這個初學者也能夠輕鬆上手。這門課程非常適合想要嘗試水彩畫的新手，強烈推薦大家來一起上課！</p>
-                  <p class="card-text text-end mt-auto"><small class="text-muted">秀雅</small></p>
-                </div>
-              </div>
-              <div class="card border-0 border-start border-end d-none d-lg-block">
-                <div class="card-body d-flex flex-column h-100">
-                  <h5 class="card-title mb-4 h5 text-center fw-bold"># 琳琳的粉彩世界</h5>
-                  <p class="card-text fs-6">第一次接觸粉彩，以前對粉彩的印象就是會把顏色塗得很髒，感覺很不好上手。但看了琳琳老師的作品覺得好美，抱著試試看的心情報名，沒想到就這样入坑了: )</p>
-                  <p class="card-text text-end mt-auto"><small class="text-muted">小光</small></p>
-                </div>
-              </div>
-              <div class="card border-0 d-none d-lg-block">
-                <div class="card-body d-flex flex-column h-100">
-                  <h5 class="card-title mb-4 h5 text-center fw-bold"># 花束製作</h5>
-                  <p class="card-text fs-6">老師很仔細的教導我們花材的挑選、搭配、編排等技巧，最後每個人都成功做出一束完整的花束，如果你也喜歡花藝或是想嘗試，一定要來上這個課程喔！</p>
-                  <p class="card-text text-end mt-auto"><small class="text-muted">橘子</small></p>
-                </div>
-              </div>
-            </div>
+    <swiper
+      :slidesPerView="1"
+      :spaceBetween="10"
+      :loop="true"
+      :pagination="{
+        clickable: true,
+      }"
+      :breakpoints="{
+        '768': {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        '992': {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        '1440': {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+      }"
+      :modules="modules"
+      class="mySwiper"
+    >
+      <swiper-slide>
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-4 h5 text-center fw-bold"># 大人的水彩課</h5>
+            <p class="card-text fs-6">美琪老師的水彩課，簡直讓我愛上了這個媒材！老師很親切，教學風格也非常好，讓我這個初學者也能夠輕鬆上手。這門課程非常適合想要嘗試水彩畫的新手，強烈推薦大家來一起上課！</p>
+            <p class="card-text text-end mt-auto"><small class="text-muted">秀雅</small></p>
           </div>
         </div>
-        <div class="carousel-item">
-          <div class="d-block d-flex justify-content-center">
-            <div class="card-group w-80">
-              <div class="card border-0 px-4 px-lg-0">
-                <div class="card-body d-flex flex-column h-100">
-                  <h5 class="card-title mb-4 h5 text-center fw-bold"># 海報設計</h5>
-                  <p class="card-text fs-6">因為工作需求參加了小左老師的海報設計課程，老師循序漸進地教導，讓我掌握了基本技巧和設計原則。這些知識和技能在我的工作中派上了用場，讓我有更多發展機會，非常感謝小左老師的用心指導！</p>
-                  <p class="card-text text-end mt-auto"><small class="text-muted">小櫻</small></p>
-                </div>
-              </div>
-              <div class="card border-0 border-start border-end d-none d-lg-block">
-                <div class="card-body d-flex flex-column h-100">
-                  <h5 class="card-title mb-4 h5 text-center fw-bold"># Lisa 的色鉛筆教室</h5>
-                  <p class="card-text fs-6">很喜歡 Lisa 老師的教學風格，老師有問必答，也很接受學生有不同的想法，上起課來沒有壓力，時間一下子就過去了。</p>
-                  <p class="card-text text-end mt-auto"><small class="text-muted">牙牙</small></p>
-                </div>
-              </div>
-              <div class="card border-0  d-none d-lg-block">
-                <div class="card-body d-flex flex-column h-100">
-                  <h5 class="card-title mb-4 h5 text-center fw-bold"># 人物攝影</h5>
-                  <p class="card-text fs-6">推薦威爾老師的攝影課程！老師教的不只是攝影技巧，還有如何捕捉當下美好的心法。在課堂上，我學到了很多攝影的基礎知識，也學會了怎麼拍出有故事性的照片。收穫很多！</p>
-                  <p class="card-text text-end mt-auto"><small class="text-muted">Melody</small></p>
-                </div>
-              </div>
-            </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-4 h5 text-center fw-bold"># 琳琳的粉彩世界</h5>
+            <p class="card-text fs-6">第一次接觸粉彩，以前對粉彩的印象就是會把顏色塗得很髒，感覺很不好上手。但看了琳琳老師的作品覺得好美，抱著試試看的心情報名，沒想到就這样入坑了: )</p>
+            <p class="card-text text-end mt-auto"><small class="text-muted">小光</small></p>
+        </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-4 h5 text-center fw-bold"># 花束製作</h5>
+            <p class="card-text fs-6">老師很仔細的教導我們花材的挑選、搭配、編排等技巧，最後每個人都成功做出一束完整的花束，如果你也喜歡花藝或是想嘗試，一定要來上這個課程喔！</p>
+            <p class="card-text text-end mt-auto"><small class="text-muted">橘子</small></p>
           </div>
         </div>
-        <div class="carousel-item">
-          <div class="d-block d-flex justify-content-center">
-            <div class="card-group w-80">
-              <div class="card border-0 px-4 px-lg-0">
-                <div class="card-body d-flex flex-column h-100">
-                  <h5 class="card-title mb-4 h5 text-center fw-bold"># 藝術鑑賞</h5>
-                  <p class="card-text fs-6">Benny老師的藝術鑑賞課，真的是開了我的藝術眼界！老師講解的很詳細，也讓我對不同的藝術形式有了更深入的了解。這門課真的讓我覺得非常有收穫，推薦給所有喜歡藝術的朋友！</p>
-                  <p class="card-text text-end mt-auto"><small class="text-muted">KS</small></p>
-                </div>
-              </div>
-              <div class="card border-0 border-start border-end d-none d-lg-block">
-                <div class="card-body d-flex flex-column h-100">
-                  <h5 class="card-title mb-4 h5 text-center fw-bold"># 大人的水彩課</h5>
-                  <p class="card-text fs-6">過去是沒有水彩經驗的初學者，參加了美琪老師的水彩課，跟著老師從最基礎的技巧開始學起，一路進步到現在。老師在課堂中總是耐心指導學員，再基礎的問題都會溫柔地回答，如果你也是初學者，推薦給你！</p>
-                  <p class="card-text text-end mt-auto"><small class="text-muted">Soso</small></p>
-                </div>
-              </div>
-              <div class="card border-0  d-none d-lg-block">
-                <div class="card-body d-flex flex-column h-100">
-                  <h5 class="card-title mb-4 h5 text-center fw-bold"># Lisa 的色鉛筆教室</h5>
-                  <p class="card-text fs-6">Lisa 老師超級幽默，所有課程裡面最喜歡 Lisa 老師的課了！教學淺顯易懂，沒有學過畫畫也可以完成帶有個人色彩的作品喔！</p>
-                  <p class="card-text text-end mt-auto"><small class="text-muted">James</small></p>
-                </div>
-              </div>
-            </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-4 h5 text-center fw-bold"># 海報設計</h5>
+            <p class="card-text fs-6">因為工作需求參加了小左老師的海報設計課程，老師循序漸進地教導，讓我掌握了基本技巧和設計原則。這些知識和技能在我的工作中派上了用場，讓我有更多發展機會，非常感謝小左老師的用心指導！</p>
+            <p class="card-text text-end mt-auto"><small class="text-muted">小櫻</small></p>
           </div>
         </div>
-      </div> 
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-4 h5 text-center fw-bold"># Lisa 的色鉛筆教室</h5>
+            <p class="card-text fs-6">很喜歡 Lisa 老師的教學風格，老師有問必答，也很接受學生有不同的想法，上起課來沒有壓力，時間一下子就過去了。</p>
+            <p class="card-text text-end mt-auto"><small class="text-muted">牙牙</small></p>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-4 h5 text-center fw-bold"># 人物攝影</h5>
+            <p class="card-text fs-6">推薦威爾老師的攝影課程！老師教的不只是攝影技巧，還有如何捕捉當下美好的心法。在課堂上，我學到了很多攝影的基礎知識，也學會了怎麼拍出有故事性的照片。收穫很多！</p>
+            <p class="card-text text-end mt-auto"><small class="text-muted">Melody</small></p>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-4 h5 text-center fw-bold"># 藝術鑑賞</h5>
+            <p class="card-text fs-6">Benny老師的藝術鑑賞課，真的是開了我的藝術眼界！老師講解的很詳細，也讓我對不同的藝術形式有了更深入的了解。這門課真的讓我覺得非常有收穫，推薦給所有喜歡藝術的朋友！</p>
+            <p class="card-text text-end mt-auto"><small class="text-muted">KS</small></p>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-4 h5 text-center fw-bold"># 大人的水彩課</h5>
+            <p class="card-text fs-6">過去是沒有水彩經驗的初學者，參加了美琪老師的水彩課，跟著老師從最基礎的技巧開始學起，一路進步到現在。老師在課堂中總是耐心指導學員，再基礎的問題都會溫柔地回答，如果你也是初學者，推薦給你！</p>
+            <p class="card-text text-end mt-auto"><small class="text-muted">Soso</small></p>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-4 h5 text-center fw-bold"># Lisa 的色鉛筆教室</h5>
+            <p class="card-text fs-6">Lisa 老師超級幽默，所有課程裡面最喜歡 Lisa 老師的課了！教學淺顯易懂，沒有學過畫畫也可以完成帶有個人色彩的作品喔！</p>
+            <p class="card-text text-end mt-auto"><small class="text-muted">James</small></p>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper>
   </section>
   <section class="location container-fluid p-5 d-flex flex-column justify-content-center">
     <h2 class="h1 font-rufina text-center mb-0">Location / <span class="fs-5 align-middle">藝享教室</span></h2>
@@ -229,12 +237,17 @@
 
 <script>
   import { RouterLink } from 'vue-router'
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+  import { Pagination } from 'swiper/modules';
   const { VITE_URL, VITE_PATH } = import.meta.env
   import Swal from 'sweetalert2'
 
   export default {
     data () {
       return {
+        modules: [Pagination],
         products: [],
         isLoading: false,
         visible: false,
@@ -243,7 +256,7 @@
       }
     },
     components: {
-      RouterLink
+      RouterLink, Swiper, SwiperSlide
     },
     methods: {
       getProducts () {
@@ -360,5 +373,14 @@
 
 iframe {
   max-width: 100%;
+}
+
+.mySwiper{
+  height: 300px;
+  margin-top: 50px;
+}
+
+.card-body {
+  margin-bottom: 50px;
 }
 </style>

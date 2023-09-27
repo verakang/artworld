@@ -17,7 +17,7 @@
         </div>
       </div>
       <div v-else class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-8 col-xxl-7">
           <table class="table align-middle px-6">
             <thead>
               <tr>
@@ -70,7 +70,7 @@
             </tfoot>
           </table>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-4 col-xxl-5">
           <div class="mb-5 row justify-content-center">
             <v-form ref="form" class="col-md-10" v-slot="{ errors }" @submit="sendOrder">
               <h3 class="mt-5 mt-lg-0 mb-4 pb-2 border-bottom">訂單資料</h3>
