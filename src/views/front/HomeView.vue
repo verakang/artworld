@@ -151,7 +151,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title mb-4 h5 text-center fw-bold"># 大人的水彩課</h5>
             <p class="card-text fs-6">美琪老師的水彩課，簡直讓我愛上了這個媒材！老師很親切，教學風格也非常好，讓我這個初學者也能夠輕鬆上手。這門課程非常適合想要嘗試水彩畫的新手，強烈推薦大家來一起上課！</p>
-            <p class="card-text text-end mt-auto"><small class="text-muted">秀雅</small></p>
+            <p class="card-text text-end mt-auto"><small class="text-muted me-1 me-1">秀雅</small></p>
           </div>
         </div>
       </swiper-slide>
@@ -160,7 +160,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title mb-4 h5 text-center fw-bold"># 琳琳的粉彩世界</h5>
             <p class="card-text fs-6">第一次接觸粉彩，以前對粉彩的印象就是會把顏色塗得很髒，感覺很不好上手。但看了琳琳老師的作品覺得好美，抱著試試看的心情報名，沒想到就這样入坑了: )</p>
-            <p class="card-text text-end mt-auto"><small class="text-muted">小光</small></p>
+            <p class="card-text text-end mt-auto"><small class="text-muted me-1">小光</small></p>
         </div>
         </div>
       </swiper-slide>
@@ -169,7 +169,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title mb-4 h5 text-center fw-bold"># 花束製作</h5>
             <p class="card-text fs-6">老師很仔細的教導我們花材的挑選、搭配、編排等技巧，最後每個人都成功做出一束完整的花束，如果你也喜歡花藝或是想嘗試，一定要來上這個課程喔！</p>
-            <p class="card-text text-end mt-auto"><small class="text-muted">橘子</small></p>
+            <p class="card-text text-end mt-auto"><small class="text-muted me-1">橘子</small></p>
           </div>
         </div>
       </swiper-slide>
@@ -178,7 +178,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title mb-4 h5 text-center fw-bold"># 海報設計</h5>
             <p class="card-text fs-6">因為工作需求參加了小左老師的海報設計課程，老師循序漸進地教導，讓我掌握了基本技巧和設計原則。這些知識和技能在我的工作中派上了用場，讓我有更多發展機會，非常感謝小左老師的用心指導！</p>
-            <p class="card-text text-end mt-auto"><small class="text-muted">小櫻</small></p>
+            <p class="card-text text-end mt-auto"><small class="text-muted me-1">小櫻</small></p>
           </div>
         </div>
       </swiper-slide>
@@ -187,7 +187,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title mb-4 h5 text-center fw-bold"># Lisa 的色鉛筆教室</h5>
             <p class="card-text fs-6">很喜歡 Lisa 老師的教學風格，老師有問必答，也很接受學生有不同的想法，上起課來沒有壓力，時間一下子就過去了。</p>
-            <p class="card-text text-end mt-auto"><small class="text-muted">牙牙</small></p>
+            <p class="card-text text-end mt-auto"><small class="text-muted me-1">牙牙</small></p>
           </div>
         </div>
       </swiper-slide>
@@ -196,7 +196,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title mb-4 h5 text-center fw-bold"># 人物攝影</h5>
             <p class="card-text fs-6">推薦威爾老師的攝影課程！老師教的不只是攝影技巧，還有如何捕捉當下美好的心法。在課堂上，我學到了很多攝影的基礎知識，也學會了怎麼拍出有故事性的照片。收穫很多！</p>
-            <p class="card-text text-end mt-auto"><small class="text-muted">Melody</small></p>
+            <p class="card-text text-end mt-auto"><small class="text-muted me-1">Melody</small></p>
           </div>
         </div>
       </swiper-slide>
@@ -205,7 +205,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title mb-4 h5 text-center fw-bold"># 藝術鑑賞</h5>
             <p class="card-text fs-6">Benny老師的藝術鑑賞課，真的是開了我的藝術眼界！老師講解的很詳細，也讓我對不同的藝術形式有了更深入的了解。這門課真的讓我覺得非常有收穫，推薦給所有喜歡藝術的朋友！</p>
-            <p class="card-text text-end mt-auto"><small class="text-muted">KS</small></p>
+            <p class="card-text text-end mt-auto"><small class="text-muted me-1">KS</small></p>
           </div>
         </div>
       </swiper-slide>
@@ -214,7 +214,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title mb-4 h5 text-center fw-bold"># 大人的水彩課</h5>
             <p class="card-text fs-6">過去是沒有水彩經驗的初學者，參加了美琪老師的水彩課，跟著老師從最基礎的技巧開始學起，一路進步到現在。老師在課堂中總是耐心指導學員，再基礎的問題都會溫柔地回答，如果你也是初學者，推薦給你！</p>
-            <p class="card-text text-end mt-auto"><small class="text-muted">Soso</small></p>
+            <p class="card-text text-end mt-auto"><small class="text-muted me-1">Soso</small></p>
           </div>
         </div>
       </swiper-slide>
@@ -223,7 +223,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title mb-4 h5 text-center fw-bold"># Lisa 的色鉛筆教室</h5>
             <p class="card-text fs-6">Lisa 老師超級幽默，所有課程裡面最喜歡 Lisa 老師的課了！教學淺顯易懂，沒有學過畫畫也可以完成帶有個人色彩的作品喔！</p>
-            <p class="card-text text-end mt-auto"><small class="text-muted">James</small></p>
+            <p class="card-text text-end mt-auto"><small class="text-muted me-1">James</small></p>
           </div>
         </div>
       </swiper-slide>
@@ -376,11 +376,21 @@ iframe {
 }
 
 .mySwiper{
-  height: 300px;
+  height: 320px;
   margin-top: 50px;
 }
 
 .card-body {
   margin-bottom: 50px;
+}
+
+@media(max-width: 768px) {
+  .mySwiper{
+    height: 250px;
+  }
+
+  .card-body {
+    margin-bottom: 30px;
+  }
 }
 </style>
